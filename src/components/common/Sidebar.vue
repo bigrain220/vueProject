@@ -62,6 +62,16 @@ export default {
                     title: '系统首页'
                 },
                 {
+                    icon: 'el-icon-lx-home',
+                    index: 'alibaba',
+                    title: '阿里巴巴'
+                },
+                {
+                    icon: 'el-icon-lx-home',
+                    index: 'madeInChina',
+                    title: '中国制造'
+                },
+                {
                     icon: 'el-icon-lx-cascades',
                     index: 'table',
                     title: '基础表格'
@@ -145,11 +155,6 @@ export default {
                         }
                     ]
                 },
-                {
-                    icon: 'el-icon-lx-redpacket_fill',
-                    index: '/donate',
-                    title: '支持作者'
-                }
             ]
         };
     },

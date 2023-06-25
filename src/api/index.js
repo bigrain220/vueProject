@@ -1,9 +1,11 @@
-import request from '../utils/request';
+import request from '@/utils/request'
 
-export const fetchData = query => {
+export const fetchData = (query) => {
     return request({
-        url: './table.json',
+        url: '.',
         method: 'get',
         params: query
     });
 };
+
+export const loginApi = (data) => request.post('/login', data);

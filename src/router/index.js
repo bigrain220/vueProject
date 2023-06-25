@@ -20,6 +20,16 @@ export default new Router({
                     meta: { title: '系统首页' }
                 },
                 {
+                    path: 'alibaba',
+                    component: () => import('@/components/page/alibaba.vue'),
+                    meta: { title: '阿里巴巴' }
+                },
+                {
+                    path: 'madeInChina',
+                    component: () => import('@/components/page/madeInChina.vue'),
+                    meta: {title: '中国制造'}
+                  },
+                {
                     path: '/icon',
                     component: () => import(/* webpackChunkName: "icon" */ '../components/page/Icon.vue'),
                     meta: { title: '自定义图标' }
@@ -96,11 +106,6 @@ export default new Router({
                     path: '/403',
                     component: () => import(/* webpackChunkName: "403" */ '../components/page/403.vue'),
                     meta: { title: '403' }
-                },
-                {
-                    path: '/donate',
-                    component: () => import(/* webpackChunkName: "donate" */ '../components/page/Donate.vue'),
-                    meta: { title: '支持作者' }
                 }
             ]
         },
