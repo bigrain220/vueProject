@@ -12,15 +12,15 @@
                             :props="{ label: 'name', value: 'code', checkStrictly: true }"
                         />
                     </el-form-item>
-                    <!--          <el-form-item label="行业：" label-width="60px">-->
-                    <!--            <el-cascader-->
-                    <!--              v-model="queryForm.category"-->
-                    <!--              clearable-->
-                    <!--              filterable-->
-                    <!--              :options="category_options"-->
-                    <!--              :props="{ label: 'label', value: 'value', checkStrictly: true }"-->
-                    <!--            />-->
-                    <!--          </el-form-item>-->
+                    <el-form-item label="行业：" label-width="60px">
+                        <el-cascader
+                            v-model="queryForm.category"
+                            clearable
+                            filterable
+                            :options="category_options"
+                            :props="{ label: 'label', value: 'value', checkStrictly: true }"
+                        />
+                    </el-form-item>
                     <el-form-item label="搜索：" label-width="60px">
                         <el-input v-model="queryForm.keyword" placeholder="关键词" />
                     </el-form-item>

@@ -8,4 +8,4 @@ export const fetchData = (query) => {
     });
 };
 
-export const loginApi = (data) => request.post('/login', data);
+export const loginApi = (data) => request.post('/merchant/login', data);

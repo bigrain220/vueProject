@@ -3,15 +3,15 @@ import request from '@/utils/request'
 export function getCategoryOptions() {
   return request({
     url: '/merchant/getCategoryOptions',
-    method: 'get',
+    method: 'post',
   })
 }
 
-export function getList(params) {
+export function getList(data) {
   return request({
     url: '/merchant/getList',
-    method: 'get',
-    params,
+    method: 'post',
+    data,
   })
 }
 
@@ -31,10 +31,10 @@ export function doDelete(data) {
   })
 }
 
-export function doExportExcel(params) {
+export function doExportExcel(data) {
   return request({
     url: '/merchant/doExportExcel',
-    method: 'get',
-    params,
+    method: 'post',
+    data,
   })
 }
