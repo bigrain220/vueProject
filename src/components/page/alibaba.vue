@@ -147,7 +147,7 @@ export default {
                 data: { url }
             } = await doExportExcel(this.queryForm);
             const baseURL = process.env.VUE_APP_BASE_URL;
-            window.open(baseURL + url, '_blank');
+            window.open(baseURL + '/BaBa/' + url, '_blank');
             this.listLoading = false;
         },
         handleDelete(row, flag = '') {

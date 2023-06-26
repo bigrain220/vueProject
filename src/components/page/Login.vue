@@ -45,6 +45,7 @@ export default {
                         const { token } = res.data;
                         this.$message.success('登录成功');
                         localStorage.setItem('ms_username', this.param.username);
+                        localStorage.setItem('ms_token',token)
                         this.$router.push('/');
                     });
                 } else {
