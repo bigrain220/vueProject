@@ -12,7 +12,7 @@ const instance = axios.create({
 // 响应拦截器
 instance.interceptors.response.use(
     (res) => {
-        console.log('res: ', res);
+        // console.log('res: ', res);
         // 未设置状态码则默认成功状态
         const code = res.data.status || 200;
         // 获取错误信息

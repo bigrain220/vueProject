@@ -109,8 +109,6 @@
 import { getList, doDelete, getCategoryOptions, doExportExcel } from '@/api/merchant';
 // import Edit from './components/MerchantEdit';
 import { getAreaOptions } from '@/utils/area';
-// import { baseURL } from '@/config';
-var baseURL = '';
 
 export default {
     name: 'Alibaba',
@@ -125,7 +123,7 @@ export default {
             selectRows: '',
             queryForm: {
                 pageNo: 1,
-                pageSize: 15,
+                pageSize: 10,
                 keyword: '',
                 type: [],
                 area: [],
@@ -144,12 +142,13 @@ export default {
             const {
                 data: { url }
             } = await doExportExcel(this.queryForm);
+            const baseURL = location.host;
             window.open(baseURL + url, '_blank');
             this.listLoading = false;
         },
         handleDelete(row, flag = '') {
             if (row.id) {
-                this.$confirm('你确定要' + flag + '标记当前项吗', null, async () => {
+                this.$confirm('你确定要' + flag + '标记当前项吗', '提示').then(async () => {
                     const { msg } = await doDelete({ ids: row.id });
                     this.$message(msg, 'success', 'vab-hey-message-success');
                     await this.fetchData();
@@ -157,7 +156,7 @@ export default {
             } else {
                 if (this.selectRows.length > 0) {
                     const ids = this.selectRows.map((item) => item.id).join();
-                    this.$confirm('你确定要' + flag + '标记选中项吗', null, async () => {
+                    this.$confirm('你确定要' + flag + '标记选中项吗', '提示').then(async () => {
                         const { msg } = await doDelete({ ids });
                         this.$message(msg, 'success', 'vab-hey-message-success');
                         await this.fetchData();
