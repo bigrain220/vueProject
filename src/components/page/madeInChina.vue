@@ -84,7 +84,7 @@
             </el-table-column>
             <el-table-column align="center" label="最近查看时间">
                 <template #default="{ row }">
-                    <div>{{ row.view_time || '未查看' }}</div>
+                    <div>{{ getTime(row.view_time) || '未查看' }}</div>
                     <el-tag v-if="row.sign_time" class="ml-2" type="danger">于{{ row.sign_time }}被标记</el-tag>
                 </template>
             </el-table-column>
@@ -111,6 +111,7 @@
 import { getList, doDelete, getCategoryOptions, doExportExcel } from '@/api/merchant';
 // import Edit from './components/MerchantEdit'
 import { getAreaOptions } from '@/utils/area';
+import * as dayjs from 'dayjs';
 
 export default {
     // components: {Edit},
@@ -135,6 +136,9 @@ export default {
         };
     },
     methods: {
+        getTime(time) {
+            return time ? dayjs(time).format('YYYY-MM-DD HH:mm:ss') : '';
+        },
         setSelectRows(val) {
             this.selectRows = val;
         },
@@ -143,7 +147,7 @@ export default {
             const {
                 data: { url }
             } = await doExportExcel(this.queryForm);
-            const baseURL = location.host;
+            const baseURL = process.env.VUE_APP_BASE_URL;
             window.open(baseURL + url, '_blank');
             this.listLoading = false;
         },

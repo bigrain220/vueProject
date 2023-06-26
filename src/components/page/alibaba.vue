@@ -83,7 +83,7 @@
             </el-table-column>
             <el-table-column align="center" label="最近查看时间">
                 <template #default="{ row }">
-                    <div>{{ row.view_time || '未查看' }}</div>
+                    <div>{{ getTime(row.view_time) || '未查看' }}</div>
                 </template>
             </el-table-column>
             <el-table-column align="center" label="操作" width="100">
@@ -109,6 +109,7 @@
 import { getList, doDelete, getCategoryOptions, doExportExcel } from '@/api/merchant';
 // import Edit from './components/MerchantEdit';
 import { getAreaOptions } from '@/utils/area';
+import * as dayjs from 'dayjs';
 
 export default {
     name: 'Alibaba',
@@ -134,6 +135,9 @@ export default {
         };
     },
     methods: {
+        getTime(time) {
+            return time ? dayjs(time).format('YYYY-MM-DD HH:mm:ss') : '';
+        },
         setSelectRows(val) {
             this.selectRows = val;
         },
@@ -142,7 +146,7 @@ export default {
             const {
                 data: { url }
             } = await doExportExcel(this.queryForm);
-            const baseURL = location.host;
+            const baseURL = process.env.VUE_APP_BASE_URL;
             window.open(baseURL + url, '_blank');
             this.listLoading = false;
         },

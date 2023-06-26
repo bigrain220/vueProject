@@ -3,9 +3,7 @@ import errorCode from '@/utils/errCode';
 import { Message } from 'element-ui';
 
 const instance = axios.create({
-    // process.env.NODE_ENV === 'development' 来判断是否开发环境
-    // easy-mock服务挂了，暂时不使用了
-    baseURL: '/api',
+    baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_URL + '/api' : '/api',
     timeout: 5000
 });
 
